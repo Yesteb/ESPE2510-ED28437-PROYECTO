@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <functional>
 
 template <typename T>
 class Nodo {
@@ -7,7 +9,7 @@ public:
     Nodo<T>* siguiente;
     Nodo<T>* anterior;
 
-    NodoDobleCircular(T valor) : dato(valor), siguiente(nullptr), anterior(nullptr) {}
+    NodoDobleCircular(T valor);
 };
 
 template <typename T>
@@ -17,15 +19,17 @@ private:
     Nodo<T>* cola;
     size_t tamaño;
 public:
-    ListaDobleCircular() : cabeza(nullptr), cola(nullptr), tamaño(0) {}
+    ListaDobleCircular();
     ~ListaDobleCircular();
 
     void insertarInicio(Nodo<T> *&lista, T valor);
     void insertarFinal(Nodo<T> *&lista, T valor);
     void eliminarInicio(Nodo<T> *&lista);
     void eliminarFinal(Nodo<T> *&lista);
-    bool buscar(Nodo<T> * lista, T valor);
+    Nodo<T> buscar(Nodo<T> * lista, T valor);
     void mostrar(Nodo<T>* lista);
     void eliminarLista(Nodo<T> *&lista, T valor);
 
 };
+
+#include "ListaDobleCIrcular.hpp"
