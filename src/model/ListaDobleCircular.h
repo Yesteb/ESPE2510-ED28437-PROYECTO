@@ -7,7 +7,7 @@ public:
     Nodo<T>* siguiente;
     Nodo<T>* anterior;
 
-    NodoDobleCircular(const T& valor) : dato(valor), siguiente(nullptr), anterior(nullptr) {}
+    NodoDobleCircular(T valor) : dato(valor), siguiente(nullptr), anterior(nullptr) {}
 };
 
 template <typename T>
@@ -18,11 +18,7 @@ private:
     size_t tamaño;
 public:
     ListaDobleCircular() : cabeza(nullptr), cola(nullptr), tamaño(0) {}
-    ~ListaDobleCircular() {
-        while (tamaño > 0) {
-            eliminarInicio();
-        }
-    }
+    ~ListaDobleCircular();
 
     void insertarInicio(Nodo<T> *&lista, T valor);
     void insertarFinal(Nodo<T> *&lista, T valor);
