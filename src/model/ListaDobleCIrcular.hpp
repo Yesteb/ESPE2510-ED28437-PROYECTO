@@ -29,6 +29,4 @@ void ListaDobleCircular<T>::insertarInicio(T valor){
         cabeza = nuevo_nodo;
     }
 
-
-    
 }
