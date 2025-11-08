@@ -9,7 +9,8 @@ public:
     Nodo<T>* siguiente;
     Nodo<T>* anterior;
 
-    NodoDobleCircular(T valor);
+    Nodo(T );
+    ~Nodo();
 };
 
 template <typename T>
@@ -17,12 +18,12 @@ class ListaDobleCircular {
 private:
     Nodo<T>* cabeza;
     Nodo<T>* cola;
-    size_t tamaño;
+
 public:
     ListaDobleCircular();
     ~ListaDobleCircular();
 
-    void insertarInicio(Nodo<T> *&lista, T valor);
+    void insertarInicio(T valor);
     void insertarFinal(Nodo<T> *&lista, T valor);
     void eliminarInicio(Nodo<T> *&lista);
     void eliminarFinal(Nodo<T> *&lista);
