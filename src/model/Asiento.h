@@ -6,7 +6,7 @@ class Asiento {
 private:
     char[2] nombreAsiento;
     std::string tipoAsiento;
-    Usuario usuario;
+    Usuario duenioAsiento;
 public: 
     Asiento();
     ~Asiento();
@@ -22,5 +22,6 @@ public:
     void setUsuario(Usuario);
 
 }
+
 
 
