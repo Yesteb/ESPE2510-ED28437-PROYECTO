@@ -70,7 +70,7 @@ bool Validador::validarCedulaEcuatoriana(const std::string& cedula) {
 
     return resultado == digitoVerificador;
 }
-
+/*
 std::string Validador::validarCantidad() {
     std::string monto;
     char c;
@@ -115,3 +115,4 @@ std::string Validador::validarCantidad() {
 
     return monto;
 }
+*/
