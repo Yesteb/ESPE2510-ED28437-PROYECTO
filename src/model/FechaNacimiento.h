@@ -16,6 +16,7 @@ public:
     const char* getFechaHora() const;
     void imprimir() const;
     bool esMayorDeEdad(int, int, int) const;
+    bool esMenorCuatroAniosEdad(int, int, int) const;
 
 };
 
