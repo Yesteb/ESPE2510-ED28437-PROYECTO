@@ -1,44 +1,30 @@
 #pragma once
-#include ".h"
 #include <iostream>
 #include <string>
-using namespace std; 
+#include "Validacion.h"
+
+using namespace std;
+
 class Usuario {
 private:
-    std::string nombre;
-    std::string cedula;
-    std::string numeroCelular;
-    std::string fechaNacimiento;
-    
+    string nombre;
+    string cedula;
+    string numeroCelular;
+    string correo;
 
 public:
-    Usuario();
-    ~Usuario();
+    Usuario() = default;
+    Usuario(const string& nombre, const string& cedula,
+             const string& numeroCelular, const string& correo);
 
-    void ingresarUsuario(){
-        cout<<"Ingrese su Nombre y Apellido: "<<; 
-        cin>>nombre; 
-        cout<<"Ingrese su numero de cedula: <<; 
-        cin>>cedula; 
-        cout<<"Ingrese su numero de telefono: "<<;
-        cin>>numeroCelular;       
-    }
+    // --- Setters ---
+    void setNombre(const string& nombre);
+    void setCedula(const string& cedula);
+    void setNumeroCelular(const string& numeroCelular);
+    void setCorreo(const string& correo);
 
-    void mostrarDatos(){
-       
-    
-    }
-
-    //Getters
-    std::string getNombre();
-    std::string getCedula();
-    std::string getNumeroCelular();
-    std::string getFechaNacimiento();
-
-    //Setters
-    void setNombre(std::string);
-    void setCedula(std::string);
-    void setNumeroCelular(std::string);
-    void setFechaNacimiento(std::string);
-
+    // --- Métodos principales ---
+    void mostrarDatos() const;
+    void ingresarDatos();
 };
+
