@@ -8,7 +8,7 @@ private:
     std::string nombre;
     std::string cedula;
     Boleto* boleto;
-
+    
 
 
 
