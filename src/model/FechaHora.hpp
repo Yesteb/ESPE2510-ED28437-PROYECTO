@@ -1,5 +1,5 @@
 #pragma once
-#include "FechaNacimiento.h"
+#include "FechaHora.h"
 
 FechaHora::FechaHora(){
     actualizar();
