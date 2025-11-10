@@ -5,7 +5,7 @@
 class Boleto{
 private:
     std::string id;
-    FechaHora fechaHoraRegistro;
+    std::string fechaHora;
 
 
 
