@@ -22,8 +22,9 @@ public:
     void setTipoAsiento(std::string);
     void setUsuario(Usuario);
 
-}
+};
 
 
+#include "Asiento.hpp"
 
 
