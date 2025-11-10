@@ -1,3 +1,4 @@
+#pragma once
 #include "FechaNacimiento.h"
 
 FechaHora::FechaHora(){
