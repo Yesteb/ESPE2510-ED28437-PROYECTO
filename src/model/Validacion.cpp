@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include "Validacion.h"
 #include <iostream>
@@ -9,17 +9,17 @@
 
 using namespace std;
 
-void Validador::validar(const string& texto, const string& tipo) {
+void Validacion::validar(const string& texto, const string& tipo) {
     if (tipo == "nombre" || tipo == "apellido") {
         regex patron("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$");
         if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error: " + tipo + " contiene caracteres inválidos.");
+            throw invalid_argument("Error: " + tipo + " contiene caracteres invalidos.");
         }
     }
     else if (tipo == "telefono") {
         regex patron("^[0-9]{7,15}$");
         if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error: teléfono debe contener solo números (7-15 dígitos).");
+            throw invalid_argument("Error, el  telefono debe contener solo números (7-15 dígitos).");
         }
     }
     else if (tipo == "correo") {
@@ -27,25 +27,25 @@ void Validador::validar(const string& texto, const string& tipo) {
         regex patron(R"(^[A-Za-z0-9][\w\.-]*[A-Za-z0-9]@[A-Za-z0-9][\w\.-]*\.[A-Za-z]{2,}$)");
 
         if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error: formato de correo electrónico inválido.");
+            throw invalid_argument("Error; formato de correo electronico invalido.");
         }
 
         if (texto.find("..") != string::npos || texto.back() == '.' || texto.back() == '/' ||
             texto.back() == '"' || texto.back() == '|' || texto.front() == '.' || texto.front() == '-') {
-            throw invalid_argument("Error: el correo contiene caracteres inválidos o mal ubicados.");
+            throw invalid_argument("Error: el correo contiene caracteres invalidos o mal ubicados.");
         }
     }
     else if (tipo == "cedula") {
         if (!validarCedulaEcuatoriana(texto)) {
-            throw invalid_argument("Error: cédula ecuatoriana inválida.");
+            throw invalid_argument("Error: cedula  ecuatoriana invalida.");
         }
     }
     else {
-        throw invalid_argument("Error: tipo de validación desconocido.");
+        throw invalid_argument("Error: tipo de validacion desconocido.");
     }
 }
 
-bool Validador::validarCedulaEcuatoriana(const std::string& cedula) {
+bool Validacion::validarCedulaEcuatoriana(const std::string& cedula) {
     static const std::regex regexNumeros("^[0-9]{10}$");
     if (!std::regex_match(cedula, regexNumeros)) {
         return false;
@@ -70,8 +70,8 @@ bool Validador::validarCedulaEcuatoriana(const std::string& cedula) {
 
     return resultado == digitoVerificador;
 }
-/*
-std::string Validador::validarCantidad() {
+
+std::string Validacion::validarCantidad() {
     std::string monto;
     char c;
     bool puntoUsado = false;
@@ -115,4 +115,3 @@ std::string Validador::validarCantidad() {
 
     return monto;
 }
-*/
