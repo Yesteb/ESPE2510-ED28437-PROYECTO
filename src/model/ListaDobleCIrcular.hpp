@@ -15,6 +15,7 @@ ListaDobleCircular<T>::~ListaDobleCircular() {}
 
 // ---------------------------------------------------------
 // insertar al inicio
+/*
 template <typename T>
 void ListaDobleCircular<T>::insertarInicio(T valor){
     Nodo<T>* nuevo = new Nodo<T>(valor);
@@ -36,11 +37,11 @@ void ListaDobleCircular<T>::insertarInicio(T valor){
 
     cout<<"nodo insertado correctamente"<<endl; 
 }
-
+*/
 // ---------------------------------------------------------
 // insertar al final
 template <typename T>
-void ListaDobleCircular<T>::insertarFinal(Nodo<T>*& lista, T valor){
+bool ListaDobleCircular<T>::insertarFinal(Nodo<T>*& lista, T valor){
     Nodo<T>* nuevo = new Nodo<T>(valor);
     nuevo->siguiente = nullptr;
     nuevo->anterior = nullptr;
@@ -50,7 +51,7 @@ void ListaDobleCircular<T>::insertarFinal(Nodo<T>*& lista, T valor){
         lista->siguiente = lista;
         lista->anterior = lista;
         cout<<"nodo insertado al final correctamente"<<endl; 
-        return;
+        return false;
     }
 
     Nodo<T>* aux = lista;
@@ -64,6 +65,7 @@ void ListaDobleCircular<T>::insertarFinal(Nodo<T>*& lista, T valor){
     lista->anterior = nuevo;
 
     cout<<"nodo insertado al final correctamente"<<endl; 
+    return true;
 }
 
 // ---------------------------------------------------------
