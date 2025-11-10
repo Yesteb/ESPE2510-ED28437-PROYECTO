@@ -4,7 +4,7 @@
 AsientosController::AsientosController(){}
 AsientosController::~AsientosController(){}
 
-int AsientosController::reservar(Nodo<Asiento> estadio, Asiento asiento){
+int AsientosController::reservar(Nodo<Asiento>* estadio, Asiento asiento){
     estadio.insertarFinal(estadio, asiento) 
     return 1;
 }
