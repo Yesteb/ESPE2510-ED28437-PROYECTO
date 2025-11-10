@@ -12,7 +12,7 @@ public:
     ~Asiento();
     
     //Getters
-    char getNombreAsiento();
+    char[2] getNombreAsiento();
     std::string getTipoAsiento();
     Usuario getUsuario();
 
@@ -22,4 +22,5 @@ public:
     void setUsuario(Usuario);
 
 }
+
 
