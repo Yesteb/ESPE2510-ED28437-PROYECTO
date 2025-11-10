@@ -13,7 +13,8 @@ class AsientosController{
     ~AsientosController();
 
 
-    bool reservar(Asiento asiento);
+    int reservar(Nodo<Asiento>* estadio, Asiento asiento);
+    bool estaLlenoElEstadio(Nodo<Asiento> estadio);
     bool eliminarReserva(Asiento asiento);
     void buscarAsiento(std::string cedula);
     void mostrarAsientoReservado(std::string cedula);
