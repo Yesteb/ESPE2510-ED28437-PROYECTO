@@ -2,7 +2,7 @@
 #include ".h"
 #include <iostream>
 #include <string>
-
+using namespace std; 
 class Usuario {
 private:
     std::string nombre;
@@ -14,6 +14,20 @@ private:
 public:
     Usuario();
     ~Usuario();
+
+    void ingresarUsuario(){
+        cout<<"Ingrese su Nombre y Apellido: "<<; 
+        cin>>nombre; 
+        cout<<"Ingrese su numero de cedula: <<; 
+        cin>>cedula; 
+        cout<<"Ingrese su numero de telefono: "<<;
+        cin>>numeroCelular;       
+    }
+
+    void mostrarDatos(){
+       
+    
+    }
 
     //Getters
     std::string getNombre();
