@@ -1,4 +1,5 @@
 #pragma once
+#include "Usuario.h"
 #include <iostream>
 #include <string>
 
@@ -22,6 +23,7 @@ public:
     void setUsuario(Usuario);
 
 }
+
 
 
 
