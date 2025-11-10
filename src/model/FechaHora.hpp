@@ -8,7 +8,7 @@ FechaHora::FechaHora(){
 void FechaHora::actualizar(){
     time(&t);
     tmInfo = localtime(&t);
-    strftime(fecha, sizeof(fecha), "%Y/%m %d a las %H:%M h", tmInfo);
+    strftime(fecha, sizeof(fecha), "Fecha de la reserva: %Y/%m/%d a las %H:%M h", tmInfo);
 }
 
 const char* FechaHora::getFechaHora() const {
