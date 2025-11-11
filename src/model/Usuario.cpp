@@ -1,4 +1,5 @@
 #include "Usuario.h"
+#include "FechaHora.h"
 
 // --- Constructor ---
 Usuario::Usuario(const string& nombre, const string& cedula,
@@ -30,15 +31,17 @@ void Usuario::setCorreo(const string& correo) {
     this->correo = correo;
 }
 
-// --- Mostrar datos ---
+// Daatos del usuario
 void Usuario::mostrarDatos() const {
-    cout << "\n Datos del Usuario:\n";
+    cout << "\nDatos del Usuario:\n";
     cout << "Nombre: " << nombre << endl;
     cout << "Cedula: " << cedula << endl;
     cout << "Celular: " << numeroCelular << endl;
     cout << "Correo: " << correo << endl;
+    fechaRegistro.imprimir(); 
 }
 
+// ingreso de datos
 void Usuario::ingresarDatos() {
     string auxiliar;
     bool valido = false;
@@ -48,9 +51,9 @@ void Usuario::ingresarDatos() {
         cout << "Ingrese nombre: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "nombre");
-        if (valido == false)
+        if (!valido)
             cout << "Error: el nombre debe contener solo letras y espacios. Intente nuevamente.\n";
-    } while (valido == false);
+    } while (!valido);
     nombre = auxiliar;
 
     // Cedula
@@ -58,9 +61,9 @@ void Usuario::ingresarDatos() {
         cout << "Ingrese cedula: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "cedula");
-        if (valido == false)
+        if (!valido)
             cout << "Error: la cedula no es valida. Debe ser una cedula ecuatoriana de 10 digitos. Intente nuevamente.\n";
-    } while (valido == false);
+    } while (!valido);
     cedula = auxiliar;
 
     // Numero de celular
@@ -68,9 +71,9 @@ void Usuario::ingresarDatos() {
         cout << "Ingrese numero de celular: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "telefono");
-        if (valido == false)
+        if (!valido)
             cout << "Error: el numero de celular no es valido. Debe empezar con 0 y tener 10 digitos. Intente nuevamente.\n";
-    } while (valido == false);
+    } while (!valido);
     numeroCelular = auxiliar;
 
     // Correo electronico
@@ -78,11 +81,12 @@ void Usuario::ingresarDatos() {
         cout << "Ingrese correo electronico: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "correo");
-        if (valido == false) {
+        if (!valido)
             cout << "Error: el correo no es valido. Debe tener formato correcto, por ejemplo ivan@espe.edu.ec. Intente nuevamente.\n";
-        }
-    } while (valido == false);
+    } while (!valido);
     correo = auxiliar;
 
+    fechaRegistro.actualizar(); 
     cout << "\nUsuario registrado correctamente.\n";
 }
+
