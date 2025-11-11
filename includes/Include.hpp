@@ -1,7 +1,7 @@
 #pragma once
 #include "Include.h"
 
-void ImprimirArchivo::imprimir(char *rutaArchivo, int charMax) {
+void ImprimirArchivo::imprimirArchivo(const char* rutaArchivo, int charMax) {
     FILE *fptr = fopen(rutaArchivo, "r");
     if (fptr == nullptr) {
         std::cout << "No se ha encontrado el archivo!\n";
