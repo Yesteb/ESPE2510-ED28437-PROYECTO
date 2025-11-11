@@ -15,7 +15,7 @@ const char* FechaHora::getFechaHora() const {
     return fecha;
 }
 
-void FechaHora::imprimir() const {
+void FechaHora::imprimirFecha() const {
     std::cout << fecha << std::endl;
 }
 
