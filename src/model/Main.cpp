@@ -20,7 +20,7 @@ int main() {
         cout << "Ingrese la fecha del evento (DD/MM/AAAA): ";
         cin >> fechaEvento;
 
-        // ✅ Llamada correcta a la función de la clase Validacion
+        
         if (!Validacion::validarFecha(fechaEvento)) {
             cout << "Fecha invalida, ontente nuevamente.\n";
         }
