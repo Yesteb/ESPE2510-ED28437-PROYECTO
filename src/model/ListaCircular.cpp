@@ -32,7 +32,7 @@ void ListaCircular::insertarFinal(const Usuario& u) {
 // Mostrar todos los usuarios
 void ListaCircular::mostrar() const {
     if (cabeza == nullptr) {
-        cout << "Lista vacía.\n";
+        cout << "Lista vacia.\n";
         return;
     }
 
@@ -46,7 +46,7 @@ void ListaCircular::mostrar() const {
 // Buscar usuario por cédula
 Nodo* ListaCircular::buscar(const string& cedula) {
     if (cabeza == nullptr) {
-        cout << "Lista vacía.\n";
+        cout << "Lista vacia.\n";
         return nullptr;
     }
 
@@ -66,7 +66,7 @@ Nodo* ListaCircular::buscar(const string& cedula) {
 // Eliminar usuario por cédula
 void ListaCircular::eliminarPorCedula(const string& cedula) {
     if (cabeza == nullptr) {
-        cout << "Lista vacía, no hay usuarios que eliminar.\n";
+        cout << "Lista vacia, no hay usuarios que eliminar.\n";
         return;
     }
 
