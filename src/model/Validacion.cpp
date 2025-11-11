@@ -1,11 +1,6 @@
 
 
 #include "Validacion.h"
-#include <iostream>
-#include <regex>
-#include <stdexcept>
-#include <limits>
-
 #include "FechaHora.h"
 
 using namespace std;

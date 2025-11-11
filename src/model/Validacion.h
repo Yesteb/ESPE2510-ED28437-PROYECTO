@@ -2,6 +2,9 @@
 #include <string>
 #include <regex>
 #include <stdexcept>
+#include <limits>
+#include <iostream>
+#include <sstream>
 
 class Validacion {
 public:
