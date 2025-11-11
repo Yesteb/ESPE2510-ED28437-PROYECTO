@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Validacion.h"
+#include "FechaHora.h"
 
 using namespace std;
 
@@ -11,19 +12,24 @@ private:
     string cedula;
     string numeroCelular;
     string correo;
+    FechaHora fechaRegistro; 
 
 public:
     Usuario() = default;
     Usuario(const string& nombre, const string& cedula,
              const string& numeroCelular, const string& correo);
 
-    // --- Setters ---
     void setNombre(const string& nombre);
     void setCedula(const string& cedula);
     void setNumeroCelular(const string& numeroCelular);
     void setCorreo(const string& correo);
 
-    // --- Métodos principales ---
+    string getNombre() const { return nombre; }
+    string getCedula() const { return cedula; }
+    string getNumeroCelular() const { return numeroCelular; }
+    string getCorreo() const { return correo; }
+    FechaHora getFechaRegistro() const { return fechaRegistro; }
+
     void mostrarDatos() const;
     void ingresarDatos();
 };
