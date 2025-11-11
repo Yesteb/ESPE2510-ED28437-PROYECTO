@@ -3,28 +3,36 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Asiento {
 private:
-    char[2] nombreAsiento;
-    std::string tipoAsiento;
+    std::string nombreAsiento;   
+    std::string tipoAsiento;    
     Usuario duenioAsiento;
+
+    
+    static int disponiblesGeneral;
+    static int disponiblesPalco;
+    static int disponiblesTribuna;
+
 public: 
+   
     Asiento();
     ~Asiento();
+
+
+    std::string getNombreAsiento() const;
+    std::string getTipoAsiento() const;
+    Usuario getUsuario() const;
+
     
-    //Getters
-    char[2] getNombreAsiento();
-    std::string getTipoAsiento();
-    Usuario getUsuario();
+    void setNombreAsiento(const std::string& nombre);
+    void setTipoAsiento(const std::string& tipo);
+    void setUsuario(const Usuario& u);
 
-    //Setters
-    void setNombreAsiento(char[2]);
-    void setTipoAsiento(std::string);
-    void setUsuario(Usuario);
-
+  
+    static void mostrarDisponibilidad();
+    bool reservarAsiento(const std::string& tipo, const Usuario& u, const std::string& nombre);
 };
-
-
-#include "Asiento.hpp"
-
 
