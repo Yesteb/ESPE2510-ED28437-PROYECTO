@@ -6,42 +6,40 @@
 #include <stdexcept>
 #include <limits>
 #include <conio.h>
+#include "FechaHora.h"
 
 using namespace std;
 
-void Validacion::validar(const string& texto, const string& tipo) {
+bool Validacion::validar(const std::string& texto, const std::string& tipo) {
     if (tipo == "nombre" || tipo == "apellido") {
-        regex patron("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$");
-        if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error: " + tipo + " contiene caracteres invalidos.");
-        }
+        // Solo letras y espacios
+        std::regex patron("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$");
+        return std::regex_match(texto, patron);
     }
     else if (tipo == "telefono") {
-        regex patron("^[0-9]{7,15}$");
-        if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error, el  telefono debe contener solo números (7-15 dígitos).");
-        }
+        // Celulares ecuatorianos: empiezan con 0 y 10 dígitos
+        std::regex patron("^0[0-9]{9}$");
+        return std::regex_match(texto, patron);
     }
     else if (tipo == "correo") {
+        // Permitir correos como ivan@espe.edu.ec
+        std::regex patron(R"(^[A-Za-z0-9][\w\.-]*@[A-Za-z0-9][\w\.-]*\.[A-Za-z]{2,}(\.[A-Za-z]{2,})?$)");
+        if (!std::regex_match(texto, patron)) return false;
 
-        regex patron(R"(^[A-Za-z0-9][\w\.-]*[A-Za-z0-9]@[A-Za-z0-9][\w\.-]*\.[A-Za-z]{2,}$)");
-
-        if (!regex_match(texto, patron)) {
-            throw invalid_argument("Error; formato de correo electronico invalido.");
+        // Evitar puntos dobles, caracteres al inicio o al final
+        if (texto.find("..") != std::string::npos || 
+            texto.back() == '.' || texto.back() == '/' ||
+            texto.back() == '"' || texto.back() == '|' ||
+            texto.front() == '.' || texto.front() == '-') {
+            return false;
         }
-
-        if (texto.find("..") != string::npos || texto.back() == '.' || texto.back() == '/' ||
-            texto.back() == '"' || texto.back() == '|' || texto.front() == '.' || texto.front() == '-') {
-            throw invalid_argument("Error: el correo contiene caracteres invalidos o mal ubicados.");
-        }
+        return true;
     }
     else if (tipo == "cedula") {
-        if (!validarCedulaEcuatoriana(texto)) {
-            throw invalid_argument("Error: cedula  ecuatoriana invalida.");
-        }
+        return validarCedulaEcuatoriana(texto);
     }
     else {
-        throw invalid_argument("Error: tipo de validacion desconocido.");
+        return false;
     }
 }
 
