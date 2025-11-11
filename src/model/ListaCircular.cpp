@@ -1,4 +1,6 @@
 #include "ListaCircular.h"
+#include <iostream>
+using namespace std;
 
 // Constructor
 ListaCircular::ListaCircular() {
@@ -6,17 +8,15 @@ ListaCircular::ListaCircular() {
 }
 
 // Insertar al final
-void ListaCircular::insertarFinal(const Usuario& u) {
+void ListaCircular::insertarFinal(const Asiento& a) {
     Nodo* nuevo = new Nodo;
-    nuevo->dato = u;
-    nuevo->siguiente = nullptr;
-    nuevo->anterior = nullptr;
+    nuevo->dato = a;
 
     if (cabeza == nullptr) {
         cabeza = nuevo;
         cabeza->siguiente = cabeza;
         cabeza->anterior = cabeza;
-        cout << "Usuario insertado correctamente.\n";
+        cout << "Asiento insertado correctamente.\n";
         return;
     }
 
@@ -26,10 +26,10 @@ void ListaCircular::insertarFinal(const Usuario& u) {
     nuevo->siguiente = cabeza;
     cabeza->anterior = nuevo;
 
-    cout << "Usuario insertado correctamente al final.\n";
+    cout << "Asiento insertado correctamente al final.\n";
 }
 
-// Mostrar todos los usuarios
+// Mostrar todos los asientos
 void ListaCircular::mostrar() const {
     if (cabeza == nullptr) {
         cout << "Lista vacia.\n";
@@ -38,52 +38,63 @@ void ListaCircular::mostrar() const {
 
     Nodo* aux = cabeza;
     do {
-        aux->dato.mostrarDatos();
+        cout << "Asiento: " << aux->dato.getNombreAsiento()
+             << " | Tipo: " << aux->dato.getTipoAsiento()
+             << " | Usuario: " << aux->dato.getUsuario().getNombre()
+             << " | Cedula: " << aux->dato.getUsuario().getCedula()
+             << endl;
         aux = aux->siguiente;
     } while (aux != cabeza);
 }
 
-// Buscar usuario por cédula
-Nodo* ListaCircular::buscar(const string& cedula) {
+// Buscar todos los asientos por cedula
+void ListaCircular::buscarPorCedula(const string& cedula) {
     if (cabeza == nullptr) {
         cout << "Lista vacia.\n";
-        return nullptr;
-    }
-
-    Nodo* aux = cabeza;
-    do {
-        if (aux->dato.getCedula() == cedula) {
-            cout << "Usuario encontrado.\n";
-            return aux;
-        }
-        aux = aux->siguiente;
-    } while (aux != cabeza);
-
-    cout << "Usuario no encontrado.\n";
-    return nullptr;
-}
-
-// Eliminar usuario por cédula
-void ListaCircular::eliminarPorCedula(const string& cedula) {
-    if (cabeza == nullptr) {
-        cout << "Lista vacia, no hay usuarios que eliminar.\n";
         return;
     }
 
     Nodo* aux = cabeza;
+    bool encontrado = false;
     do {
-        if (aux->dato.getCedula() == cedula) {
+        if (aux->dato.getUsuario().getCedula() == cedula) {
+            cout << "Asiento: " << aux->dato.getNombreAsiento()
+                 << " | Tipo: " << aux->dato.getTipoAsiento()
+                 << " | Usuario: " << aux->dato.getUsuario().getNombre()
+                 << " | Cedula: " << aux->dato.getUsuario().getCedula()
+                 << endl;
+            encontrado = true;
+        }
+        aux = aux->siguiente;
+    } while (aux != cabeza);
+
+    if (!encontrado) {
+        cout << "No se encontraron asientos reservados con esa cedula.\n";
+    }
+}
+
+// Eliminar todos los asientos por cedula
+void ListaCircular::eliminarPorCedula(const string& cedula) {
+    if (cabeza == nullptr) {
+        cout << "Lista vacia, no hay asientos que eliminar.\n";
+        return;
+    }
+
+    Nodo* aux = cabeza;
+    bool eliminado = false;
+
+    do {
+        Nodo* siguiente = aux->siguiente; // guardamos siguiente antes de eliminar
+        if (aux->dato.getUsuario().getCedula() == cedula) {
             if (aux->siguiente == aux) {
                 // Solo hay un nodo
                 delete aux;
                 cabeza = nullptr;
-                cout << "Usuario eliminado correctamente.\n";
+                cout << "Todos los asientos de esa cedula eliminados.\n";
                 return;
             }
 
             Nodo* anterior = aux->anterior;
-            Nodo* siguiente = aux->siguiente;
-
             anterior->siguiente = siguiente;
             siguiente->anterior = anterior;
 
@@ -92,12 +103,14 @@ void ListaCircular::eliminarPorCedula(const string& cedula) {
             }
 
             delete aux;
-            cout << "Usuario eliminado correctamente.\n";
-            return;
+            eliminado = true;
         }
-        aux = aux->siguiente;
+        aux = siguiente;
     } while (aux != cabeza);
 
-    cout << "Usuario no encontrado.\n";
+    if (eliminado) {
+        cout << "Todos los asientos de esa cedula eliminados.\n";
+    } else {
+        cout << "No se encontraron asientos con esa cedula.\n";
+    }
 }
-
