@@ -14,7 +14,7 @@ public:
     FechaHora();
     void actualizar();
     const char* getFechaHora() const;
-    void imprimirFecha() const;
+    void imprimir() const;
 
 };
 

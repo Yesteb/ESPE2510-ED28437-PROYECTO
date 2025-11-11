@@ -5,7 +5,7 @@
 #include <regex>
 #include <stdexcept>
 #include <limits>
-#include <conio.h>
+
 #include "FechaHora.h"
 
 using namespace std;
@@ -68,7 +68,7 @@ bool Validacion::validarCedulaEcuatoriana(const std::string& cedula) {
 
     return resultado == digitoVerificador;
 }
-
+/*
 std::string Validacion::validarCantidad() {
     std::string monto;
     char c;
@@ -113,7 +113,7 @@ std::string Validacion::validarCantidad() {
 
     return monto;
 }
-
+*/
 bool Validacion::validarFecha(const string& fecha) {
     int dia, mes, anio;
     char aux1, aux2;  
