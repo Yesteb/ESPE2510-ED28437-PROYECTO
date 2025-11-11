@@ -42,7 +42,7 @@ int main() {
         cout << "5. Mostrar disponibilidad de asientos\n";
         cout << "6. Salir\n";
         cout << "Ingrese opcion: ";*/
-        ImprimirArchivo::imprimirArchivo("../resources/MenuPrincipal.txt", 654);
+        ImprimirArchivo::imprimirArchivo("../../resources/MenuPrincipal.txt", 654);
         cin >> opcion;
 
         switch(opcion) {
