@@ -6,17 +6,11 @@ class FechaHora {
 private:
     time_t t;
     struct tm* tmInfo;
-    char fecha[32];
+    char fecha[64];
 
 public:
-
     FechaHora();
-
     void actualizar();
     const char* getFechaHora() const;
     void imprimir() const;
-    bool esMenorEdad(int, int, int) const;
-
 };
-
-#include "FechaHora.hpp"
