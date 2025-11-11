@@ -5,12 +5,7 @@
 
 class Validacion {
 public:
-    
-    static void validar(const std::string& texto, const std::string& tipo);
-
-    
+    static bool validar(const std::string& texto, const std::string& tipo); 
     static bool validarCedulaEcuatoriana(const std::string& cedula);
-
-
     static std::string validarCantidad();
 };
