@@ -1,27 +1,31 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Usuario.h"
+#include "Asiento.h"
 
 using namespace std;
 
-
 struct Nodo {
-    Usuario dato;
+    Asiento dato;
     Nodo* siguiente;
     Nodo* anterior;
 };
 
-
-class ListaDobleCircular {
+class ListaCircular {
 private:
     Nodo* cabeza;
 
 public:
-    ListaDobleCircular();  
+    ListaCircular();  
+    Nodo* getCabeza() const { return cabeza; }
 
-    void insertarFinal(const Usuario& u);
+    void insertarFinal(const Asiento& a);
     void mostrar() const;
-    Nodo* buscar(const string& cedula);
+
+    void buscarPorCedula(const string& cedula);
+
     void eliminarPorCedula(const string& cedula);
+
+    Nodo* buscar(const string& nombreAsiento); 
+    void eliminarPorNombre(const string& nombreAsiento);
 };
