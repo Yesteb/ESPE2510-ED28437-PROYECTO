@@ -5,7 +5,7 @@
 
 class ImprimirArchivo{
 public:
-    void imprimir(char *, int);
+    static void imprimirArchivo(char *, int);
 };
 
 #include "Include.hpp"

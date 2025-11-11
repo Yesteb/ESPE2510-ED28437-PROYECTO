@@ -11,7 +11,7 @@ Seleccione una opción (1-5):
 +---+------------------------------------+
 | 4 | Eliminar Reserva                   |
 +---+------------------------------------+
-| 4 | Mostrar disponibilidad de asientos |
+| 5 | Mostrar disponibilidad de asientos |
 +---+------------------------------------+
-| 5 | Salir                              |
+| 6 | Salir                              |
 +---+------------------------------------+

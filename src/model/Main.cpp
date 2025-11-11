@@ -14,7 +14,6 @@ int main() {
     ListaCircular lista;   
     int opcion;
     string fechaEvento;
-    char* path = "../resources/MenuPrincipal.txt"
 
       do {
         cout << "--- Reservar Fecha del Evento ---\n";
@@ -43,7 +42,7 @@ int main() {
         cout << "5. Mostrar disponibilidad de asientos\n";
         cout << "6. Salir\n";
         cout << "Ingrese opcion: ";*/
-        imprimir(path, 654);
+        ImprimirArchivo::imprimirArchivo("../resources/MenuPrincipal.txt", 654);
         cin >> opcion;
 
         switch(opcion) {
