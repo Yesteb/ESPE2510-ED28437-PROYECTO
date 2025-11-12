@@ -30,7 +30,8 @@ public:
     string getCorreo() const { return correo; }
     FechaHora getFechaRegistro() const { return fechaRegistro; }
 
-    void mostrarDatos() const;
+      void mostrarDatos() const;
+    bool Validacion::validarNombre(const string& nombre);
     void ingresarDatos();
 };
 
