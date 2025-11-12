@@ -150,3 +150,17 @@ bool Validacion::validarNumeroEnRango(const std::string& texto, int min, int max
 bool Validacion::validarNumeroEnRango(int numero, int min, int max) {
     return numero >= min && numero <= max;
 }
+
+bool Validacion::validarHora(const string& hora) {
+    int horas, minutos;
+    char separador;
+
+    stringstream ss(hora);
+    if (!(ss >> horas >> separador >> minutos)) return false;
+
+    if (separador != ':') return false;
+    if (horas < 0 || horas > 23) return false;
+    if (minutos < 0 || minutos > 59) return false;
+
+    return true;
+}
