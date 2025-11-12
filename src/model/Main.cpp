@@ -11,26 +11,34 @@ using namespace std;
 
 
 int main() {
-    ListaCircular lista;   
-    int opcion;
-    string fechaEvento;
+       ListaCircular lista;    
+int opcion;
+string fechaEvento, horaEvento;
 
-      do {
-        cout << "--- Reservar Fecha del Evento ---\n";
-        cout << "Ingrese la fecha del evento (DD/MM/AAAA): ";
-        cin >> fechaEvento;
+do {
+    cout << "--- Reservar Fecha del Evento ---\n";
+    cout << "Ingrese la fecha del evento (DD/MM/AAAA): ";
+    cin >> fechaEvento;
 
-        
-        if (!Validacion::validarFecha(fechaEvento)) {
-            cout << "Fecha invalida, ontente nuevamente.\n";
-        }
+    if (!Validacion::validarFecha(fechaEvento)) {
+        cout << " Fecha invalida, intente nuevamente.\n";
+    }
 
-    } while (!Validacion::validarFecha(fechaEvento));
-
-    
+} while (!Validacion::validarFecha(fechaEvento));
 
 
-    cout << "Fecha del evento registrada: " << fechaEvento << endl;
+do {
+    cout << "Ingrese la hora del evento (HH:MM): ";
+    cin >> horaEvento;
+
+    if (!Validacion::validarHora(horaEvento)) {
+        cout << " Hora invalida, intente nuevamente.\n";
+    }
+
+} while (!Validacion::validarHora(horaEvento));
+
+cout << " Fecha reservada: " << fechaEvento << " a las " << horaEvento << endl;
+ 
 
     do {
 
