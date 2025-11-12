@@ -33,17 +33,9 @@ int main() {
     cout << "Fecha del evento registrada: " << fechaEvento << endl;
 
     do {
-        /*
-        cout << "\n--- Menu de Reservas de Asientos ---\n";
-        cout << "1. Reservar asiento\n";
-        cout << "2. Mostrar todos los asientos reservados\n";
-        cout << "3. Buscar asientos por cedula\n";
-        cout << "4. Eliminar asientos por cedula\n";
-        cout << "5. Mostrar disponibilidad de asientos\n";
-        cout << "6. Salir\n";
-        cout << "Ingrese opcion: ";*/
+
         ImprimirArchivo::imprimirArchivo("../../resources/MenuPrincipal.txt", 654);
-        cin >> opcion;
+        cout << "> " ;cin >> opcion;
 
         switch(opcion) {
             case 1: {
