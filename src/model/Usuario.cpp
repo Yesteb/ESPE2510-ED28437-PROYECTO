@@ -48,7 +48,7 @@ void Usuario::ingresarDatos() {
 
     // Nombre
     do {
-        cout << "Ingrese nombre: ";
+        cout << "Ingrese su nombre: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "nombre");
         if (!valido)
@@ -58,7 +58,7 @@ void Usuario::ingresarDatos() {
 
     // Cedula
     do {
-        cout << "Ingrese cedula: ";
+        cout << "Ingrese su numero de cedula (10 digitos): ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "cedula");
         if (!valido)
@@ -68,7 +68,7 @@ void Usuario::ingresarDatos() {
 
     // Numero de celular
     do {
-        cout << "Ingrese numero de celular: ";
+        cout << "Ingrese numero de celular (10 digitos): ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "telefono");
         if (!valido)
