@@ -1,3 +1,4 @@
+-------------------------------------------
 BIENVENIDO ^ _ ^
 Fecha y hora del proximo evento:
 Seleccione una opción (1-5):
