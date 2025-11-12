@@ -14,5 +14,6 @@ public:
     static bool validarFecha(const std::string& fecha); 
     static bool validarNumeroEnRango(const std::string& texto, int min, int max);
     static bool validarNumeroEnRango(int numero, int min, int max);
+    static bool validarHora(const std::string& hora);
 
 };
