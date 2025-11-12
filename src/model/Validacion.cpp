@@ -132,3 +132,21 @@ bool Validacion::validarFecha(const string& fecha) {
 
     return true;
 }
+
+bool Validacion::validarNumeroEnRango(const std::string& texto, int min, int max) {
+    //verificar si es un numero
+    std::regex patron("^[0-9]+$");
+    if (!std::regex_match(texto, patron)) {
+        return false;
+    }
+
+    // Convertir a número
+    int numero = std::stoi(texto);
+
+    // Verificar el rango
+    return numero >= min && numero <= max;
+}
+
+bool Validacion::validarNumeroEnRango(int numero, int min, int max) {
+    return numero >= min && numero <= max;
+}

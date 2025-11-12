@@ -34,7 +34,7 @@ int main() {
 
     do {
 
-        ImprimirArchivo::imprimirArchivo("../../resources/MenuPrincipal.txt", 654);
+        ImprimirArchivo::imprimirArchivo("../../resources/MenuPrincipal.txt", 701);
         cout << "> " ;cin >> opcion;
 
         switch(opcion) {
@@ -77,6 +77,8 @@ int main() {
 
             case 3: {
                 string cedula;
+                cout << "---------------------\n";
+                cout << " Datos personales\n";
                 cout << "Ingrese la cedula para buscar asientos: ";
                 cin >> cedula;
                 lista.buscarPorCedula(cedula);
