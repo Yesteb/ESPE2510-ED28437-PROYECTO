@@ -1,13 +1,13 @@
 #include "FechaHora.h"
 
-FechaHora::FechaHora() {
+FechaHora::FechaHora(){
     actualizar();
 }
 
-void FechaHora::actualizar() {
+void FechaHora::actualizar(){
     time(&t);
     tmInfo = localtime(&t);
-    strftime(fecha, sizeof(fecha), "Fecha: %Y/%m/%d a las %H:%M", tmInfo);
+    strftime(fecha, sizeof(fecha), "Fecha de la reserva: %Y/%m/%d a las %H:%M h", tmInfo);
 }
 
 const char* FechaHora::getFechaHora() const {
@@ -17,3 +17,4 @@ const char* FechaHora::getFechaHora() const {
 void FechaHora::imprimir() const {
     std::cout << fecha << std::endl;
 }
+
