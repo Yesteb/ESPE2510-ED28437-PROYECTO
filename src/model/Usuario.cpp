@@ -40,53 +40,87 @@ void Usuario::mostrarDatos() const {
     cout << "Correo: " << correo << endl;
     fechaRegistro.imprimir(); 
 }
+void Usuario::mostrarDatos() const {
+    cout << "\nDatos del Usuario:\n";
+    cout << "Nombre: " << nombre << endl;
+    cout << "Cedula: " << cedula << endl;
+    cout << "Celular: " << numeroCelular << endl;
+    cout << "Correo: " << correo << endl;
+    fechaRegistro.imprimir(); 
+}
+bool Validacion::validarNombre(const string& nombre) {
+    // No puede estar vacío
+    if (nombre.empty()) return false;
+
+    // Debe tener al menos un espacio (nombre y apellido)
+    if (nombre.find(' ') == string::npos) return false;
+
+    // Verificar que todos los caracteres sean letras o espacios
+    for (char c : nombre) {
+        if (!isalpha(c) && c != ' ')
+            return false;
+    }
+
+    int letras = 0;
+    for (char c : nombre)
+        if (isalpha(c)) letras++;
+
+    if (letras < 4) return false;
+
+    return true;
+}
 
 // ingreso de datos
 void Usuario::ingresarDatos() {
     string auxiliar;
     bool valido = false;
 
-    // Nombre
+    // 🔹 NOMBRE
     do {
-        cout << "Ingrese su nombre: ";
-        cin >> auxiliar;
-        valido = Validacion::validar(auxiliar, "nombre");
+        cout << "Ingrese nombre: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, auxiliar); 
+
+        
+        valido = Validacion::validarNombre(auxiliar);
+
         if (!valido)
-            cout << "Error: el nombre debe contener solo letras y espacios. Intente nuevamente.\n";
+            cout << "Error: el nombre debe contener solo letras y al menos un espacio (nombre y apellido). Intente nuevamente.\n";
+
     } while (!valido);
     nombre = auxiliar;
 
-    // Cedula
+    //  CEDULA
     do {
-        cout << "Ingrese su numero de cedula (10 digitos): ";
+        cout << "Ingrese cedula: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "cedula");
         if (!valido)
-            cout << "Error: la cedula no es valida. Debe ser una cedula ecuatoriana de 10 digitos. Intente nuevamente.\n";
+            cout << "Error: la cedula no es valida. Debe ser una cedula ecuatoriana de 10 digitos.\n";
     } while (!valido);
     cedula = auxiliar;
 
-    // Numero de celular
+    //  CELULAR
     do {
-        cout << "Ingrese numero de celular (10 digitos): ";
+        cout << "Ingrese numero de celular: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "telefono");
         if (!valido)
-            cout << "Error: el numero de celular no es valido. Debe empezar con 0 y tener 10 digitos. Intente nuevamente.\n";
+            cout << "Error: el numero de celular no es valido. Debe empezar con 0 y tener 10 digitos.\n";
     } while (!valido);
     numeroCelular = auxiliar;
 
-    // Correo electronico
+    //  CORREO
     do {
         cout << "Ingrese correo electronico: ";
         cin >> auxiliar;
         valido = Validacion::validar(auxiliar, "correo");
         if (!valido)
-            cout << "Error: el correo no es valido. Debe tener formato correcto, por ejemplo ivan@espe.edu.ec. Intente nuevamente.\n";
+            cout << "Error: el correo no es valido. Debe tener formato correcto (ej. ivan@espe.edu.ec).\n";
     } while (!valido);
     correo = auxiliar;
 
     fechaRegistro.actualizar(); 
-    cout << "\nUsuario registrado correctamente.\n";
+    cout << "\n Usuario registrado correctamente.\n";
 }
 
