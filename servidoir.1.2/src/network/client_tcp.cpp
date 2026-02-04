@@ -256,8 +256,6 @@ void reservarAsiento() {
     
     // Construir comando
     string cmd = "RESERVE|" + cedula + "|" + nombre + "|" + tipo + "|" + codigo;
-    cout << "\nEnviando solicitud...\n";
-    
     string resp;
     if (!enviarComando(cmd, resp)) {
         cout << "ERROR: Conexion perdida.\n";
@@ -278,6 +276,67 @@ void reservarAsiento() {
 }
 
 int main(int argc, char** argv) {
+    // Modo no interactivo: reserve <cedula> <nombre> <tipo> <codigo> [host] [port]
+    if (argc >= 2 && std::string(argv[1]) == "reserve") {
+        if (argc < 6) {
+            std::cerr << "Usage: " << argv[0] << " reserve <cedula> <nombre> <tipo> <codigo> [host] [port]\n";
+            return 1;
+        }
+        std::string cedula = argv[2];
+        std::string nombre = argv[3];
+        std::string tipo = argv[4];
+        std::string codigo = argv[5];
+        std::string host = "localhost";
+        int port = 60000;
+        if (argc >= 7) host = argv[6];
+        if (argc >= 8) port = atoi(argv[7]);
+
+        // Inicializar Winsock en Windows
+#ifdef _WIN32
+        WSADATA wsaData;
+        if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+            cout << "ERROR: WSAStartup falló\n";
+            return 1;
+        }
+#endif
+
+        sock = socket(AF_INET, SOCK_STREAM, 0);
+        if (sock < 0) { perror("socket"); return 1; }
+
+        sockaddr_in serv;
+        memset(&serv, 0, sizeof(serv));
+        serv.sin_family = AF_INET;
+        serv.sin_port = htons(port);
+        inet_pton(AF_INET, host.c_str(), &serv.sin_addr);
+
+        if (connect(sock, (struct sockaddr*)&serv, sizeof(serv)) < 0) {
+            perror("ERROR: No se pudo conectar");
+            closesocket(sock);
+#ifdef _WIN32
+            WSACleanup();
+#endif
+            return 1;
+        }
+
+        string cmd = "RESERVE|" + cedula + "|" + nombre + "|" + tipo + "|" + codigo;
+        string resp;
+        if (!enviarComando(cmd, resp)) {
+            cout << "ERROR: Conexion perdida.\n";
+            closesocket(sock);
+#ifdef _WIN32
+            WSACleanup();
+#endif
+            return 1;
+        }
+
+        cout << resp << endl;
+        closesocket(sock);
+#ifdef _WIN32
+        WSACleanup();
+#endif
+        return 0;
+    }
+
     string host = "localhost";
     int port = 60000;
     
